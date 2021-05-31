@@ -1,0 +1,56 @@
+<html>
+  <head>
+    <title>Why?</title>
+    <style>
+      * {
+        font-size: 100pt;
+      }
+
+      body {
+        display: flex;
+        margin-top: 10vh;
+        justify-content: center;
+        transition: background-color 1000ms ease;
+      }
+
+      .container {
+        max-width: 600px;
+        transition: transform 1500ms ease;
+      }
+    </style>
+    <script>
+      let colourize = () => {
+        let colour = `hsl(${360 * Math.random()}, ${25 + 70 * Math.random()}%,${
+          85 + 10 * Math.random()
+        }%)`;
+        document.body.style.backgroundColor = colour;
+        setTimeout(() => {
+          requestAnimationFrame(colourize);
+        }, 2000);
+      };
+      window.addEventListener("load", () => {
+        let container = document.querySelector(".container");
+        let rotate = () => {
+          let rotation = Math.round(
+            Math.random() * 30 * (Math.random() < 0.5 ? 1 : -1)
+          );
+          container.style.transform = `rotate(${rotation}deg)`;
+          setTimeout(() => {
+            requestAnimationFrame(rotate);
+          }, 3000);
+        };
+        requestAnimationFrame(rotate);
+      });
+      requestAnimationFrame(colourize);
+    </script>
+  </head>
+
+  <body>
+    <div class="container">
+      <marquee>Why not?</marquee>
+      <marquee direction="up">Why not?</marquee>
+      <marquee direction="down">Why not?</marquee>
+      <marquee direction="right">Why not?</marquee>
+    </div>
+  </body>
+</html>
